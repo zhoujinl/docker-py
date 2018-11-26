@@ -110,13 +110,15 @@ class ContainerSpec(dict):
         privileges (Privileges): Security options for the service's containers.
         isolation (string): Isolation technology used by the service's
             containers. Only used for Windows containers.
+        privileged (boolean): Create service as privileged mode.
+
     """
     def __init__(self, image, command=None, args=None, hostname=None, env=None,
                  workdir=None, user=None, labels=None, mounts=None,
                  stop_grace_period=None, secrets=None, tty=None, groups=None,
                  open_stdin=None, read_only=None, stop_signal=None,
                  healthcheck=None, hosts=None, dns_config=None, configs=None,
-                 privileges=None, isolation=None):
+                 privileges=None, isolation=None, privileged=None):
         self['Image'] = image
 
         if isinstance(command, six.string_types):
@@ -182,7 +184,9 @@ class ContainerSpec(dict):
 
         if isolation is not None:
             self['Isolation'] = isolation
-
+	
+        if privileged is not None:
+            self['Privileged'] = privileged
 
 class Mount(dict):
     """
