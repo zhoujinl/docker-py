@@ -204,6 +204,7 @@ class ServiceCollection(Collection):
                 that will be exposed to the service.
             privileges (Privileges): Security options for the service's
                 containers.
+            privileged (boolean): Create service as privileged mode.
 
         Returns:
             (:py:class:`Service`) The created service.
@@ -289,6 +290,7 @@ CONTAINER_SPEC_KWARGS = [
     'tty',
     'user',
     'workdir',
+    'privileged'
 ]
 
 # kwargs to copy straight over to TaskTemplate
